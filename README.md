@@ -1,3 +1,3 @@
 Truck Reception
 ===============
-TODO [IMP]
+Change bussines model in transfers
