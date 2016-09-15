@@ -25,7 +25,7 @@
                                                         ('contract_state', 'in', ['except_picking']),
                                                         '|',
                                                             ('state', 'not in', ['done']),
-                                                            ('stock_picking_id', '!=', '')]}"/>
+                                                            ('stock_picking_id', '!=', False)]}"/>
                         <button name="fun_ship" type="object" string="Finalize"
                             attrs="{'invisible': ['|',
                                                         ('contract_state', 'in', ['except_picking']),
@@ -91,7 +91,7 @@
                             </group>
                         </group>
                         <group>
-                            <field name="ticket" attrs="{'readonly':[('state', 'not in', ['weight_input'])], 'required':[('state', 'in', ['weight_input'])]}"/>
+                            <field name="ticket" attrs="{'readonly':[('state', 'not in', ['weight_output'])], 'required':[('state', 'in', ['weight_output'])]}"/>
                         </group>
                         <group>
                             <group col="1">
