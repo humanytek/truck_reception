@@ -96,11 +96,11 @@
                         <group>
                             <group col="1">
                                 <group col="3">
-                                    <field name="input_kilos" attrs="{'readonly':[('state', 'not in', ['weight_input'])], 'required':[('state', 'in', ['weight_input'])]}"/>
+                                    <field name="input_kilos" readonly="1" attrs="{'required':[('state', 'in', ['weight_input'])]}"/>
                                     <button type="object" string="Update" states="weight_input" class="oe_highlight"/>
                                 </group>
                                 <group col="3">
-                                    <field name="output_kilos" attrs="{'readonly':[('state', 'not in', ['weight_output'])], 'required':[('state', 'in', ['weight_output'])]}"/>
+                                    <field name="output_kilos" readonly="1" attrs="{'required':[('state', 'in', ['weight_output'])]}"/>
                                     <button type="object" string="Update" states="weight_output" class="oe_highlight"/>
                                 </group>
                                 <group>
@@ -148,6 +148,21 @@
             <field name="arch" type="xml">
                 <field name="state" position="attributes">
                     <attribute name="clickable">1</attribute>
+                </field>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="truck_reception_form_view_permissions_weights">
+            <field name="name">truck.reception.form</field>
+            <field name="model">truck.reception</field>
+            <field name="inherit_id" ref="truck_reception_form_view"/>
+            <field name="groups_id" eval="[(6,0, [ref('group_truck_reception_weights')])]" />
+            <field name="arch" type="xml">
+                <field name="input_kilos" position="attributes">
+                    <attribute name="readonly">0</attribute>
+                </field>
+                <field name="output_kilos" position="attributes">
+                    <attribute name="readonly">0</attribute>
                 </field>
             </field>
         </record>

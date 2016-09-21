@@ -4,5 +4,8 @@
         <record model="res.groups" id="group_truck_reception">
             <field name="name">Truck/Reception</field>
         </record>
+        <record model="res.groups" id="group_truck_reception_weights">
+            <field name="name">Truck/Reception/Weights</field>
+        </record>
     </data>
 </openerp>
