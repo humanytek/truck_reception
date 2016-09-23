@@ -1,0 +1,197 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* truck_reception
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 8.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-09-23 16:50+0000\n"
+"PO-Revision-Date: 2016-09-23 16:50+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: truck_reception
+#: model:ir.actions.act_window,help:truck_reception.truck_reception_list_action
+msgid "<p class=\"oe_view_nocontent_create\">Create the first truck reception\n"
+"                </p>\n"
+"            "
+msgstr ""
+
+#. module: truck_reception
+#: view:truck.reception:truck_reception.truck_reception_search_view
+#: selection:truck.reception,state:0
+msgid "Analysis"
+msgstr ""
+
+#. module: truck_reception
+#: field:truck.reception,auxiliary_contract:0
+msgid "Auxiliary contract"
+msgstr ""
+
+#. module: truck_reception
+#: field:truck.reception,contract_id:0
+msgid "Contract id"
+msgstr ""
+
+#. module: truck_reception
+#: field:truck.reception,contract_type:0
+msgid "Contract type"
+msgstr ""
+
+#. module: truck_reception
+#: view:truck.reception:truck_reception.truck_reception_form_view
+#: field:truck.reception,delivered:0
+msgid "Delivered"
+msgstr ""
+
+#. module: truck_reception
+#: field:truck.reception,location_id:0
+msgid "Destination"
+msgstr ""
+
+#. module: truck_reception
+#: view:truck.reception:truck_reception.truck_reception_search_view
+#: selection:truck.reception,state:0
+msgid "Done"
+msgstr ""
+
+#. module: truck_reception
+#: view:truck.reception:truck_reception.truck_reception_form_view_permissions_ship
+msgid "Finalize"
+msgstr ""
+
+#. module: truck_reception
+#: view:truck.reception:truck_reception.truck_reception_form_view
+#: field:truck.reception,hired:0
+msgid "Hired"
+msgstr ""
+
+#. module: truck_reception
+#: view:truck.reception:truck_reception.truck_reception_form_view
+#: field:truck.reception,pending:0
+msgid "Pending"
+msgstr ""
+
+#. module: truck_reception
+#: field:truck.reception,product_id:0
+msgid "Product id"
+msgstr ""
+
+#. module: truck_reception
+#: model:ir.model,name:truck_reception.model_purchase_order
+msgid "Purchase Order"
+msgstr ""
+
+#. module: truck_reception
+#: view:truck.reception:truck_reception.truck_reception_search_view
+#: field:truck.reception,state:0
+msgid "State"
+msgstr ""
+
+#. module: truck_reception
+#: field:truck.reception,contract_state:0
+msgid "Status"
+msgstr ""
+
+#. module: truck_reception
+#: field:truck.reception,stock_picking_id:0
+msgid "Stock picking id"
+msgstr ""
+
+#. module: truck_reception
+#: field:truck.reception,street:0
+msgid "Street"
+msgstr ""
+
+#. module: truck_reception
+#: field:truck.reception,partner_id:0
+msgid "Supplier"
+msgstr ""
+
+#. module: truck_reception
+#: view:truck.reception:truck_reception.truck_reception_form_view
+msgid "Transfer"
+msgstr ""
+
+#. module: truck_reception
+#: model:ir.actions.act_window,name:truck_reception.truck_reception_list_action
+#: model:ir.ui.menu,name:truck_reception.menu_action_truck_reception_form
+#: view:truck.reception:truck_reception.truck_reception_form_view
+msgid "Truck Reception"
+msgstr ""
+
+#. module: truck_reception
+#: view:truck.reception:truck_reception.truck_reception_form_view
+msgid "Truck Reception Form"
+msgstr ""
+
+#. module: truck_reception
+#: view:truck.reception:truck_reception.truck_reception_tree_view
+msgid "Truck Reception Tree"
+msgstr ""
+
+#. module: truck_reception
+#: field:purchase.order,truck_reception_ids:0
+msgid "Truck reception ids"
+msgstr ""
+
+#. module: truck_reception
+#: model:res.groups,name:truck_reception.group_truck_reception
+msgid "Truck/Reception"
+msgstr ""
+
+#. module: truck_reception
+#: model:res.groups,name:truck_reception.group_truck_reception_ship
+msgid "Truck/Reception/Ship"
+msgstr ""
+
+#. module: truck_reception
+#: model:res.groups,name:truck_reception.group_truck_reception_weights
+msgid "Truck/Reception/Weights"
+msgstr ""
+
+#. module: truck_reception
+#: view:purchase.order:truck_reception.purchase_order_truck_reception
+msgid "Trucks reception"
+msgstr ""
+
+#. module: truck_reception
+#: view:truck.reception:truck_reception.truck_reception_form_view
+msgid "Unload"
+msgstr ""
+
+#. module: truck_reception
+#: view:truck.reception:truck_reception.truck_reception_search_view
+#: selection:truck.reception,state:0
+msgid "Unloading"
+msgstr ""
+
+#. module: truck_reception
+#: view:truck.reception:truck_reception.truck_reception_form_view
+msgid "Update"
+msgstr ""
+
+#. module: truck_reception
+#: selection:truck.reception,state:0
+msgid "Weight Input"
+msgstr ""
+
+#. module: truck_reception
+#: selection:truck.reception,state:0
+msgid "Weight Output"
+msgstr ""
+
+#. module: truck_reception
+#: view:truck.reception:truck_reception.truck_reception_search_view
+msgid "Weight input"
+msgstr ""
+
+#. module: truck_reception
+#: view:truck.reception:truck_reception.truck_reception_search_view
+msgid "Weight output"
+msgstr ""
