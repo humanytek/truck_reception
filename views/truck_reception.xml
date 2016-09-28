@@ -130,7 +130,7 @@
                 <tree string="Truck Reception Tree">
                     <field name="name"/>
                     <field name="contract_id"/>
-                    <field name="product_id"/>
+                    <field name="driver"/>
                     <field name="state"/>
                 </tree>
             </field>
@@ -194,6 +194,8 @@
                     <group string="Group By">
                         <filter name="group_by_state" string="State"
                                 context="{'group_by': 'state'}"/>
+                        <filter name="group_by_driver" string="Driver"
+                                context="{'group_by': 'driver'}"/>
                     </group>
                 </search>
             </field>
