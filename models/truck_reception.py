@@ -1,5 +1,6 @@
 from openerp import api, fields, models
-
+import requests
+import json
 
 class TruckReception(models.Model):
     _inherit = ['truck', 'vehicle.reception', 'mail.thread']
@@ -32,6 +33,24 @@ class TruckReception(models.Model):
     @api.one
     def fun_unload(self):
         self.state = 'weight_output'
+
+    @api.one
+    def humidity_update(self):
+    	url = 'http://189.220.177.158:49276'
+    	response = requests.get(url)
+    	json_data = json.loads(response.text)
+    	self.humidity_rate = float(json_data['humedad'].strip())
+    	self.density = float(json_data['densidad'].strip())
+    	self.temperature = float(json_data['temperatura'].strip())
+
+    @api.one
+    def weight_update(self):
+        url = 'http://189.220.177.158:49277'
+        response = requests.get(url)
+        json_data = json.loads(response.text)
+        self.input_kilos = float(json_data['peso_entrada'])
+        self.output_kilos = float(json_data['peso_salida'])
+        self.raw_kilos = float(json_data['peso_neto'])
 
     @api.multi
     def write(self, vals, recursive=None):

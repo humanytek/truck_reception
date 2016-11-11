@@ -21,7 +21,8 @@
                     <header>
                         <button name="fun_unload" type="object" string="Unload" states="unloading" class="oe_highlight"/>
                         <button name="fun_transfer" type="object" string="Transfer" class="oe_highlight"
-                            attrs="{'invisible': ['|',
+                            	groups="__export__.res_groups_93"
+  				attrs="{'invisible': ['|',
                                                         ('contract_state', 'in', ['except_picking']),
                                                         '|',
                                                             ('state', 'not in', ['done']),
@@ -44,12 +45,14 @@
                                 </group>
                                 <group>
                                     <field name="partner_id"/>
-                                    <field name="street"/>
+                                    <field name="street2" string="Campo"/>
                                 </group>
                             </group>
                             <group>
+				<field name="date" string="Fecha" attrs="{'readonly':[('state', 'not in', ['analysis'])]}"/>
                                 <field name="driver" required="1" attrs="{'readonly':[('state', 'not in', ['analysis'])]}"/>
                                 <field name="car_plates" required="1" attrs="{'readonly':[('state', 'not in', ['analysis'])]}"/>
+				<field name="active" string="Activo" groups="__export__.res_groups_96"/>
                             </group>
                         </group>
                         <group col="3">
@@ -68,9 +71,9 @@
                         </group>
                         <group>
                             <field name="product_id"/>
-                            <field name="location_id" attrs="{'readonly':[('state', 'not in', ['weight_input'])], 'required':[('state', 'in', ['weight_input'])]}"/>
+                            <field name="location_id" attrs="{'readonly':[('state', 'not in', ['analysis','weight_input'])], 'required':[('state', 'in', ['weight_input'])]}"/>
                         </group>
-                        <button type="object" string="Update" states="analysis" class="oe_highlight"/>
+                        <button type="object" name="humidity_update" string="Update" states="analysis" class="oe_highlight"/>
                         <group col="3">
                                 <group>
                                     <field name="humidity_rate" required="1" attrs="{'readonly':[('state', 'not in', ['analysis'])]}"/>
@@ -87,26 +90,26 @@
                             </group>
                         </group>
                         <group>
-                            <field name="ticket" attrs="{'readonly':[('state', 'not in', ['weight_output'])], 'required':[('state', 'in', ['weight_output'])]}"/>
+                            <field name="ticket" attrs="{'readonly':[('state', 'not in', ['weight_input','weight_output'])], 'required':[('state', 'in', ['weight_output'])]}"/>
                         </group>
                         <group>
                             <group col="1">
                                 <group col="3">
-                                    <field name="input_kilos" readonly="1" attrs="{'required':[('state', 'in', ['weight_input'])]}"/>
-                                    <button type="object" string="Update" states="weight_input" class="oe_highlight"/>
+                                    <field name="input_kilos" attrs="{'required':[('state', 'in', ['weight_input'])]}"/>
+                                    <button type="object" name="weight_update" string="Update" states="weight_input" class="oe_highlight"/>
                                 </group>
                                 <group col="3">
-                                    <field name="output_kilos" readonly="1" attrs="{'required':[('state', 'in', ['weight_output'])]}"/>
-                                    <button type="object" string="Update" states="weight_output" class="oe_highlight"/>
+                                    <field name="output_kilos"  attrs="{'required':[('state', 'in', ['weight_output'])]}"/>
+                                    <button type="object" name="weight_update" string="Update" states="weight_output" class="oe_highlight"/>
                                 </group>
                                 <group>
                                     <field name="raw_kilos"/>
                                 </group>
                             </group>
                             <group>
-                                <field name="damaged_kilos"/>
                                 <field name="broken_kilos"/>
                                 <field name="impure_kilos"/>
+                                <field name="damaged_kilos"/>
                                 <field name="humid_kilos"/>
                                 <field name="clean_kilos"/>
                             </group>
@@ -129,14 +132,19 @@
             <field name="arch" type="xml">
                 <tree string="Truck Reception Tree">
                     <field name="name"/>
+                    <field name="ticket"/>
                     <field name="contract_id"/>
+                    <field name="partner_id"/>
                     <field name="driver"/>
+                    <field name="car_plates"/>
+                    <field name="raw_kilos" sum="raw kilos"/>
+                    <field name="clean_kilos" sum="clean kilos"/>
                     <field name="state"/>
                 </tree>
             </field>
         </record>
 
-        <record model="ir.ui.view" id="truck_reception_form_view_permissions">
+	<record model="ir.ui.view" id="truck_reception_form_view_permissions">
             <field name="name">truck.reception.form</field>
             <field name="model">truck.reception</field>
             <field name="inherit_id" ref="truck_reception_form_view"/>
@@ -148,22 +156,22 @@
             </field>
         </record>
 
-        <record model="ir.ui.view" id="truck_reception_form_view_permissions_weights">
+	
+	<record model="ir.ui.view" id="truck_reception_form_view_permissions_weights">
             <field name="name">truck.reception.form</field>
             <field name="model">truck.reception</field>
             <field name="inherit_id" ref="truck_reception_form_view"/>
             <field name="groups_id" eval="[(6,0, [ref('group_truck_reception_weights')])]" />
             <field name="arch" type="xml">
                 <field name="input_kilos" position="attributes">
-                    <attribute name="readonly">0</attribute>
-                    <attribute name="states">weight_input</attribute>
+                    <attribute name="attrs">{'readonly':[('state', 'not in', ['weight_input'])]}</attribute>
                 </field>
                 <field name="output_kilos" position="attributes">
-                    <attribute name="readonly">0</attribute>
-                    <attribute name="states">weight_output</attribute>
+                    <attribute name="attrs">{'readonly':[('state', 'not in', ['weight_output'])]}</attribute>
                 </field>
             </field>
-        </record>
+        </record> 
+
 
         <record model="ir.ui.view" id="truck_reception_form_view_permissions_ship">
             <field name="name">truck.reception.form</field>
@@ -185,6 +193,11 @@
             <field name="model">truck.reception</field>
             <field name="arch" type="xml">
                 <search>
+                    <field name="partner_id"/>
+                    <field name="ticket"/>
+                    <field name="contract_id"/>
+                    <field name="name"/>
+
                     <filter name="analysis" string="Analysis" domain="[('state', '=', 'analysis')]"/>
                     <filter name="weight_input" string="Weight input" domain="[('state', '=', 'weight_input')]"/>
                     <filter name="unloading" string="Unloading" domain="[('state', '=', 'unloading')]"/>
