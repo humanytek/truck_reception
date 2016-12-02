@@ -45,7 +45,7 @@ class TruckReception(models.Model):
 
     @api.one
     def weight_update(self):
-        url = 'http://189.220.177.158:49277'
+        url = 'http://yecora.zapto.org:8081'
         response = requests.get(url)
         json_data = json.loads(response.text)
         self.input_kilos = float(json_data['peso_entrada'])

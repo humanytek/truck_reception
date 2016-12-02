@@ -21,7 +21,7 @@
                     <header>
                         <button name="fun_unload" type="object" string="Unload" states="unloading" class="oe_highlight"/>
                         <button name="fun_transfer" type="object" string="Transfer" class="oe_highlight"
-                            	groups="__export__.res_groups_93"
+                            	groups="truck_reception.group_truck_transfer"
   				attrs="{'invisible': ['|',
                                                         ('contract_state', 'in', ['except_picking']),
                                                         '|',
@@ -155,7 +155,6 @@
                 </field>
             </field>
         </record>
-
 	
 	<record model="ir.ui.view" id="truck_reception_form_view_permissions_weights">
             <field name="name">truck.reception.form</field>
@@ -209,6 +208,8 @@
                                 context="{'group_by': 'state'}"/>
                         <filter name="group_by_driver" string="Driver"
                                 context="{'group_by': 'driver'}"/>
+			<filter name="group_by_location" string="Location"
+                                context="{'group_by': 'location_id'}"/>
                     </group>
                 </search>
             </field>
